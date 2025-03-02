@@ -11,7 +11,7 @@ function reducer(state: any, action: any){
         case "add":
             return [...state, action.payload];
         case "edit":
-            return state.map((task: string, index: number) => index === action.payload.index ? action.payload.newTaskk : task);
+            return state.map((task: string, index: number) => index === action.payload.qeqeqwe ? action.payload.newTaskk : task);
         case "remove":
             return state.filter(( _ : any, index: number) => index !== action.payload.toRemoveIndex);
     }
@@ -36,7 +36,7 @@ export function CrudScreenContent() {
         setIsEditClicked(true);
         setEditingIndex(Index);
         if(NewTask.trim() !== ""){
-            dispatch({type: "edit", payload: { index: Index, newTaskk: NewTask}})
+            dispatch({type: "edit", payload: { qeqeqwe: Index, newTaskk: NewTask}})
             console.log("New Task Name: " + NewTask + " index: " +Index);
             setIsEditClicked(false);
             setEditingIndex(null);
