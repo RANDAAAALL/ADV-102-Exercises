@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useForm, Controller } from "react-hook-form";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase/config";
+import { router } from "expo-router";
 
 type FormData = {
   email: string;
@@ -11,9 +14,18 @@ export default function RegisterPageExercise8() {
   const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
   const [submittedData, setSubmittedData] = useState<FormData | null>(null);
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     console.log(data);
     setSubmittedData(data);
+
+    try{
+      const user = await signInWithEmailAndPassword(auth, data.email, data?.password);
+      console.log("Signed in: ", user);
+
+      router.replace("/dashboard");
+    }catch(error){
+      console.log("Firebase error: ", error);
+    }
   };
 
   return (

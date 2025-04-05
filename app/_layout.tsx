@@ -8,7 +8,6 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -72,6 +71,10 @@ export default function RootLayout() {
       <Stack.Screen 
         name="screens/exercise_8/login" 
         options={{ title: "Login Screen" }} 
+      />
+      <Stack.Screen 
+        name="dashboard/index" 
+        options={{ title: "Dashboard"}} 
       />
       </Stack>
       <StatusBar style="auto" />
