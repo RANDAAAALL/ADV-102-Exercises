@@ -61,6 +61,18 @@ export default function RootLayout() {
         name="screens/quiz" 
         options={{ title: "Quiz screen" }} 
       />
+       <Stack.Screen 
+        name="screens/exercise_8/login-and-registration" 
+        options={{ title: "Form Container" }} 
+      />
+      <Stack.Screen 
+        name="screens/exercise_8/register" 
+        options={{ title: "Registration Screen" }} 
+      />
+      <Stack.Screen 
+        name="screens/exercise_8/login" 
+        options={{ title: "Login Screen" }} 
+      />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

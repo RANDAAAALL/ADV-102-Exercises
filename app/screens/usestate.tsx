@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native"; 
-import buttons from "../utils/hooksButtons";
+import { buttons } from "../utils/hooksButtons";
 import FormatedTime from "@/components/ui/FormatTime";
 
 export default function State() {

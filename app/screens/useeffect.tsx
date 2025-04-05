@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import buttons from "../utils/hooksButtons";
+import { buttons } from "../utils/hooksButtons";
 import FormatedTime from "@/components/ui/FormatTime";
 
 export default function Effect() {
