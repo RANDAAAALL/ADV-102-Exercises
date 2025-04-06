@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from "react-native";
-import { useForm, Controller} from "react-hook-form";
+import { useForm, Controller, set } from "react-hook-form";
+import { createUserWithEmailAndPassword  } from "firebase/auth";
+import { auth } from '@/app/firebase/config'
 import * as ImagePicker from 'expo-image-picker'
+import { router} from "expo-router";
+import { useImage } from "../dashboard/contextProvider/ImageProvder";
+// import { ref, uploadBytes } from "firebase/storage";
 
 type FormData = {
   email: string;
@@ -10,7 +15,9 @@ type FormData = {
 
 export default function RegisterPageExercise8() {
   const { control, handleSubmit, setValue ,formState: { errors }} = useForm<FormData>();
-  const [image, setImage] = useState<string | null>(null);
+  const [submittedData, setSubmittedData] = useState<FormData | null>(null);
+  const [tempImage, setTempImage] = useState<string | null>(null);
+  // const { setImage } = useImage();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const pickImage = async () => {
@@ -27,31 +34,51 @@ export default function RegisterPageExercise8() {
         console.log(result);
     
         if (!result.canceled) {
-          setImage(result.assets[0].uri);
+          setTempImage(result.assets[0].uri);
+          // setImage(tempImage);
         }
-
         setIsLoading(false);
   };
 
   const onSubmit = async (userData: FormData) => {
-    if(!image) {
+    if(!tempImage) {
       alert("Please select an image!");
       return;
     }
+    console.log("Sucessfully registered: ", userData)
+    // setImage(tempImage);
 
-    console.log(`Registered Successfully: `, userData);
-    setValue("email", "");
-    setValue("password", "");
-    setImage(null);
+    try {
+      const user = await createUserWithEmailAndPassword(auth, userData.email, userData.password);
+      console.log("User created: ", user);
+
+      // const imageRef = ref(storage, 'images/' + image?.split('/').pop());
+      // // Fetch the image as a blob and upload it
+      // const response = await fetch(image!);
+      // const blob = await response.blob();
+      // await uploadBytes(imageRef, blob); 
+
+      // console.log("Image uploaded: ", imageRef);
+
+      // navigate tot the login screen
+      setValue("email", "");
+      setValue("password", "");
+      setTempImage("");
+      router.push( "screens/exercise_9/login" as any);
+
+    } catch (err) {
+      console.log("FirebaseError: ", err);
+    }
 };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Create an account</Text>
+
       <View style={styles.form}>
         <Text style={{textAlign: "center", marginVertical: 20}}>
-                   {image ? (
-                       <Image source={{ uri: image}} style={styles.image} />
+                   {tempImage ? (
+                       <Image source={{ uri: tempImage}} style={styles.image} />
                        ) : (
                            <View style={styles.imagePlacholder} />
                        )}

@@ -13,14 +13,13 @@ export default function HomeScreenContext(){
     useEffect(() => {
         if(!auth.currentUser){
             console.log("User is not logged in!");
-            router.replace("/screens/exercise_8/login" as any);
+            router.replace("/screens/exercise_9/login" as any);
             return;
         }
 
         const currentUser = auth.currentUser;
 
         const isEmailAdded = userData.some((data) => data.title === currentUser?.email);
-
         
         if (!isEmailAdded && currentUser?.email) {
           setUserData((prev) => [
@@ -34,11 +33,11 @@ export default function HomeScreenContext(){
     return (
         <View style={style.container}>
        {userData.map((data: any, i: number) => (
-          <>
+          <View key={i}>
            <Text 
            style={{fontSize: i === 0 ? 30 : 20, marginBottom: 10 }}
-           key={i}>{data.title}</Text>
-          </>
+           >{data.title}</Text>
+          </View>
        ))}
        <TouchableOpacity style={style.button} onPress={() =>{
         auth.signOut()

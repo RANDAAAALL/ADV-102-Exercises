@@ -33,8 +33,12 @@ export default function TabTwoScreen() {
     routerPush: "/components/quiz" as any,
     },
     { title: "Exercise",
-    description: "Use a React Hook Form for registration and login page",
+    description: "Use a React Hook Form only for registration and login screens",
     routerPush: "/screens/exercise_8/login-and-registration" as any,
+    },
+    { title: "Exercise",
+    description: "Use a React Hook Form with Firebase Authentication on registration and login screens",
+    routerPush: "/screens/exercise_9/login-and-registration" as any,
     },
   ];
   

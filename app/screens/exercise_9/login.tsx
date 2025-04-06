@@ -1,5 +1,9 @@
+import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { useForm, Controller } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/app/firebase/config";
+import { router} from "expo-router";
 
 type FormData = {
   email: string;
@@ -8,9 +12,19 @@ type FormData = {
 
 export default function LoginPageExercise8() {
   const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
+  
+  const onSubmit = async (data: FormData) => {
+    console.log("Successfully logged in: ", data);
 
-  const onSubmit = (userData: FormData) => {
-    console.log(`Successfully logged in: `, userData);
+    try{
+      const user = await signInWithEmailAndPassword(auth, data.email, data?.password);
+      console.log("Signed in: ", user);
+
+      await new Promise(res => setTimeout(res, 1000));
+      router.replace("/screens/dashboard/App" as any );
+    }catch(error){
+      console.log("Firebase error: ", error);
+    }
   };
 
   return (

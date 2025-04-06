@@ -2,7 +2,6 @@ import { router } from "expo-router";
 import { View, Text, TouchableOpacity } from "react-native";
 
 export default function FormContainers(){
-
     return (
         <View style={{
             flex: 1,
@@ -13,9 +12,9 @@ export default function FormContainers(){
             fontSize: 30,
             fontWeight: "bold",
             marginBottom: 20,
-            }}>React Form Only</Text>
-            {[{name: "Navigate to Login Screen", route: "/screens/exercise_8/login" as any},
-              {name: "Navigate to Register screen", route: "/screens/exercise_8/register" as any}].map((n, i) => (
+            }}>React Form With Firebase Authentication</Text>
+            {[{name: "Navigate to Login Screen", route: "/screens/exercise_9/login" as any},
+              {name: "Navigate to Register screen", route: "/screens/exercise_9/register" as any}].map((n, i) => (
               <TouchableOpacity
                style={{
                 borderColor: '#000000',

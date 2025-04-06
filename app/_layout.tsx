@@ -58,7 +58,7 @@ export default function RootLayout() {
       />
        <Stack.Screen 
         name="screens/exercise_8/login-and-registration" 
-        options={{ title: "Form Container" }} 
+        options={{ title: "Forms" }} 
       />
       <Stack.Screen 
         name="screens/exercise_8/register" 
@@ -66,6 +66,18 @@ export default function RootLayout() {
       />
       <Stack.Screen 
         name="screens/exercise_8/login" 
+        options={{ title: "Login Screen" }} 
+      />
+      <Stack.Screen 
+        name="screens/exercise_9/login-and-registration" 
+        options={{ title: "Forms" }} 
+      />
+      <Stack.Screen 
+        name="screens/exercise_9/register" 
+        options={{ title: "Registration Screen" }} 
+      />
+      <Stack.Screen 
+        name="screens/exercise_9/login" 
         options={{ title: "Login Screen" }} 
       />
       <Stack.Screen 
