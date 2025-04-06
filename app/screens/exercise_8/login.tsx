@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/firebase/config";
-import { router } from "expo-router";
+import { auth } from "@/app/firebase/config";
+import { router} from "expo-router";
 
 type FormData = {
   email: string;
   password: string;
 };
 
-export default function RegisterPageExercise8() {
+export default function LoginPageExercise8() {
   const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
   const [submittedData, setSubmittedData] = useState<FormData | null>(null);
 
@@ -22,7 +22,8 @@ export default function RegisterPageExercise8() {
       const user = await signInWithEmailAndPassword(auth, data.email, data?.password);
       console.log("Signed in: ", user);
 
-      router.replace("/screens/dashboard/index" as any );
+      await new Promise(res => setTimeout(res, 1000));
+      router.replace("/screens/dashboard/App" as any );
     }catch(error){
       console.log("Firebase error: ", error);
     }

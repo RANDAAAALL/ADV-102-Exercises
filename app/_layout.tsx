@@ -69,8 +69,9 @@ export default function RootLayout() {
         options={{ title: "Login Screen" }} 
       />
       <Stack.Screen 
-        name="screens/dashboard/index" 
-        options={{ title: "Dashboard"}} 
+        name="screens/dashboard/App" 
+        options={{ title: "Dashboard",
+          headerShown: false,}} 
       />
       </Stack>
       <StatusBar style="auto" />

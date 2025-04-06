@@ -4,14 +4,14 @@ import { getAuth } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyDGsV1-WXYWHk7Tmbb2ux1S6fgAcic6hN0",
-  authDomain: "adv-102-exercise9.firebaseapp.com",
-  projectId: "adv-102-exercise9",
-  storageBucket: "adv-102-exercise9.firebasestorage.app",
-  messagingSenderId: "855702547933",
-  appId: "1:855702547933:web:e34569231f9159ebd4da34"
+  authDomain: process.env.EXPO_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.EXPO_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.EXPO_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.EXPO_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.EXPO_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

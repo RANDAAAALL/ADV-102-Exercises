@@ -1,6 +1,5 @@
 
 import { createContext, useContext, useState } from "react";
-
 interface Theme {
     bgColor: string,
     fontColor: string,
@@ -21,7 +20,8 @@ export function ThemeProvider({children}: {children: React.ReactNode}) {
 }
 
 export function useTheme(){
-const context = useContext(ThemeContext);
+    const context = useContext(ThemeContext);
     if(!context) throw new Error("useTheme error!");
     return context;
+    
 }
