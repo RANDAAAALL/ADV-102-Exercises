@@ -1,17 +1,14 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
@@ -28,36 +25,35 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>    
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />      
         <Stack.Screen name="+not-found" />
         <Stack.Screen 
-        name="screens/login" 
+        name="components/login" 
         options={{ title: "Login Screen" }} 
       />
        <Stack.Screen 
-        name="screens/useeffect" 
+        name="components/useeffect" 
         options={{ title: "useEffect Screen" }} 
       />
        <Stack.Screen 
-        name="screens/usestate" 
+        name="components/usestate" 
         options={{ title: "useState Screen" }} 
       />
        <Stack.Screen 
-        name="screens/hooks" 
+        name="components/hooks" 
         options={{ title: "Hooks Screen" }} 
       />
        <Stack.Screen 
-        name="screens/register" 
+        name="components/register" 
         options={{ title: "Register Screen" }} 
       />
        <Stack.Screen 
-        name="screens/crud" 
+        name="components/crud" 
         options={{ title: "CRUD Screen" }} 
       />
        <Stack.Screen 
-        name="screens/quiz" 
+        name="components/quiz" 
         options={{ title: "Quiz screen" }} 
       />
        <Stack.Screen 
@@ -73,12 +69,13 @@ export default function RootLayout() {
         options={{ title: "Login Screen" }} 
       />
       <Stack.Screen 
-        name="dashboard/index" 
+        name="screens/dashboard/index" 
         options={{ title: "Dashboard"}} 
       />
       </Stack>
       <StatusBar style="auto" />
-    </ThemeProvider>
     </GestureHandlerRootView>
   );
 }
+
+

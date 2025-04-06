@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@/components/ui/BackgroundTheme";
-import { CrudScreenContent } from "@/components/ui/CrudScreenContext";
+import { ThemeProvider } from "./BackgroundTheme";
+import { CrudScreenContent } from "./CrudScreenContent";
 
 export default function CrudScreen(){
 

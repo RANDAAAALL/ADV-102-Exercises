@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import { createUserWithEmailAndPassword, updateProfile  } from "firebase/auth";
+import { createUserWithEmailAndPassword  } from "firebase/auth";
 import { auth } from '@/firebase/config'
-import {  getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import * as ImagePicker from 'expo-image-picker'
 import { router } from "expo-router";
 
@@ -46,34 +45,11 @@ export default function RegisterPageExercise8() {
       const user = await createUserWithEmailAndPassword(auth, userData.email, userData.password);
       console.log("User created: ", user);
 
-      const currentUser = auth.currentUser;
-
-      if(currentUser){
-        if(!image) return;
-
-        const storage = getStorage();
-
-        const fileName = `profileImages/${currentUser.uid}.jpg`;
-        const imageRef = ref(storage,fileName);
-
-        const res = await fetch(image);
-
-        const blob = await res.blob();
-        await uploadBytes(imageRef,blob);
-  
-        const photoURL = await getDownloadURL(imageRef);
-
-        await updateProfile(currentUser, { photoURL });
-        console.log("Image uploaded successfully! Photo URL:", photoURL);
-
-        // resets after successfully registered!
+        // navigate tot the login screen
         setValue("email", "");
         setValue("password", "");
         setImage(null);
-
-        // navigate tot the login screen
-        router.push("screens/login" as any);
-      }
+        router.push("screens/exercise_8/login" as any);
 
     } catch (err) {
       console.log("FirebaseError: ", err);
@@ -168,14 +144,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#007bff",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
+    borderColor: '#000000',
+    borderStyle: "solid",
+    borderWidth: 1,
+    marginTop: 4,
+    borderRadius: 4,
+    padding: 4
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 16,
+  fontSize: 20,
+  fontFamily: "sans-serif",
+  color: '#000000',
+  fontWeight: "bold",
+  textAlign: "center",
+  padding: 5,
   },
   button2: {
     borderColor: '#000000',
@@ -220,3 +202,4 @@ buttonText2: {
 
 }
 });
+

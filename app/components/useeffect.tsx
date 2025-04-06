@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { buttons } from "../utils/hooksButtons";
-import FormatedTime from "@/components/ui/FormatTime";
+import { buttons } from "../../utils/hooksButtons";
+import FormatedTime from "./FormatTime";
 
 export default function Effect() {
   const [count, setCount] = useState(0);

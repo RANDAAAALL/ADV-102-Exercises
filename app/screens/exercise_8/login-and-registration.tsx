@@ -9,13 +9,13 @@ export default function FormContainers(){
             justifyContent: "center",
             alignItems: "center"
         }}>
-            {[{name: "Go to login page", route: "/screens/exercise_8/login" as const},
-              {name: "Go to register page", route: "/screens/exercise_8/register" as const}].map((n, i) => (
+            {[{name: "Go to login screen", route: "/screens/exercise_8/login" as any},
+              {name: "Go to register screen", route: "/screens/exercise_8/register" as any}].map((n, i) => (
               <TouchableOpacity
                style={{
                 borderColor: '#000000',
                 borderStyle: "solid",
-                borderWidth: 1,
+                borderWidth: 2,
                 marginTop: 15,
                 borderRadius: 4,
                 padding: 4

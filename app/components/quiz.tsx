@@ -1,5 +1,6 @@
-import { ThemeProvider } from "@/components/ui/BackgroundTheme";
-import QuizScreenContent from "@/components/ui/QuizScreenContext";
+import { ThemeProvider } from "./BackgroundTheme";
+import QuizScreenContent from "./QuizScreenContent";
+
 
 export default function QuizScreen(){
     return (

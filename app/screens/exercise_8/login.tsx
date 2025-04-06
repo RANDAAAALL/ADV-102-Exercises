@@ -22,7 +22,7 @@ export default function RegisterPageExercise8() {
       const user = await signInWithEmailAndPassword(auth, data.email, data?.password);
       console.log("Signed in: ", user);
 
-      router.replace("/dashboard");
+      router.replace("/screens/dashboard/index" as any );
     }catch(error){
       console.log("Firebase error: ", error);
     }
@@ -106,14 +106,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#007bff",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
+    borderColor: '#000000',
+    borderStyle: "solid",
+    borderWidth: 1,
+    marginTop: 4,
+    borderRadius: 4,
+    padding: 4
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: "sans-serif",
+    color: '#000000',
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: 5,
   },
   error: {
     color: "red",

@@ -25,4 +25,3 @@ const context = useContext(ThemeContext);
     if(!context) throw new Error("useTheme error!");
     return context;
 }
-

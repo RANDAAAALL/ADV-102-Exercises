@@ -3,10 +3,10 @@ import { Text, View, StyleSheet } from "react-native";
 export default function exerciseHome(){
 
     const Links = [
-        {to: "/screens/usestate" as const,
+        {to: "/components/usestate" as const,
          name: "redirect to UseState screen"},
 
-        {to: "/screens/useeffect" as const,
+        {to: "/components/useeffect" as const,
          name: "redirect to UseEffect screen"},
     ]
 

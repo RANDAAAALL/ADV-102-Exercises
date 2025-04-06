@@ -3,8 +3,8 @@ import { ToggleButton } from "./ThemeToggle";
 import { useTheme } from "./BackgroundTheme";
 import { TextInput } from "react-native-paper";
 import React, { useReducer, useState } from "react";
-import { taskBtns } from "@/app/utils/hooksButtons";
 import { AntDesign } from "@expo/vector-icons";
+import { taskBtns } from "@/utils/hooksButtons";
 
 function reducer(state: any, action: any){
     switch(action.type){
@@ -166,4 +166,3 @@ export function CrudScreenContent() {
         </View>        
 );
 }
-
