@@ -40,7 +40,10 @@ export default function HomeScreenContext(){
            key={i}>{data.title}</Text>
           </>
        ))}
-       <TouchableOpacity style={style.button} onPress={() => router.replace("/screens/exercise_8/login")}>
+       <TouchableOpacity style={style.button} onPress={() =>{
+        auth.signOut()
+        router.replace("/screens/exercise_8/login")} 
+        }>
           <Text style={style.buttonText}>Logout</Text>
         </TouchableOpacity>
         </View>
